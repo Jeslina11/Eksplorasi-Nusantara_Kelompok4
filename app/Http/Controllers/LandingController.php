@@ -22,7 +22,7 @@ class LandingController extends Controller
     }
     
     public function wisata()
-    {
+    { 
         //
         return view('landing.wisata');
     }
