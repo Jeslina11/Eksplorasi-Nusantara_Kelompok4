@@ -1,18 +1,27 @@
+{{--  <?php
+if (file_exists('koneksi.php')) {
+    include 'koneksi.php';
+} else {
+    echo "File koneksi.php tidak ditemukan!";
+    exit;
+}  --}}
+?>
 <!DOCTYPE html>
 <html>
 <head>
-    <title>wisata</title>
-    <link rel="stylesheet" href="css/wisata style.css"> 
+    <title>Wisata</title>
+    <link rel="stylesheet" href="{{ asset('css/Wisata style.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
 </head> 
-</body>
+<body>
+
 <!--------------------- NAVBAR SECTION ------------------>
 <header>
   @include('komponen.navbar')
 </header>
-  
+
 <!---------------------- BACKGROUND --------------------->
 <div class="Background"></div>
 
@@ -30,11 +39,13 @@
           <select id="provinsiSelect">
               <option value="" disabled selected hidden>Pilih Provinsi</option>
               <option value="Sulawesi Selatan">Sulawesi Selatan</option>
+              <option value="Sulawesi Tengah">Sulawesi Tengah</option>
               <option value="Sulawesi Barat">Sulawesi Barat</option>
-              <option value="Jawa Timur">Jawa Timur</option>
-              <option value="Jawa Barat">Jawa Barat</option>
+              <option value="Sulawesi Utara">Sulawesi Utara</option>
+              <!-- <option value="Jawa Timur">Jawa Timur</option>
+              <option value="Jawa Barat">Jawa Barat</option> -->
               <option value="Bali">Bali</option>
-              <option value="NTT">NTT</option>
+              <!-- <option value="NTT">NTT</option> -->
           </select>
       </div>
       <div class="separator"></div>
@@ -75,7 +86,7 @@
             <img src="image/palu.png" alt="">
             <div class="btn_city">
                 <a href="palu.html">Detail</a>
-                <h5>Sulawesi Tenggara <br> <span><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></span></h5>
+                <h5>Sulawesi Tengah <br> <span><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></span></h5>
             </div>
         </div>
         <div class="card">
@@ -205,76 +216,8 @@
   </div>
 </div>
 </section>
-<!-- <div class="copyright">
-<p>Copyright 2024 By Tours</p>
-</div> -->
 
+<script src="js/Wisata script.js"></script>
 
-<!----- JAVASCRIPT ------>
-
-<!------------------- NAVBAR STICKY ---------------->
-<script>
-  const header = document.querySelector("header");
-  window.addEventListener("scroll", function() {
-    header.classList.toggle("sticky", window.scrollY > 60)
-  });
-  </script>
-
-
-
-<!--------------------- SEARCH SECTION --------------------->
-<script>
-  const citiesByProvince = {
-      "Sulawesi Selatan": ["Parepare", "Pinrang", "Makassar", "Maros", "Barru", "Tana Toraja"],
-      "Sulawesi Barat": ["Majene", "Mamuju", "Polewali"],
-      "Jawa Timur": ["Surabaya", "Malang", "Kediri"],
-      "Jawa Barat": ["Bandung", "Bogor", "Bekasi"],
-      "Bali": ["Denpasar", "Ubud", "Kuta"],
-      "NTT": ["Kupang", "Ende", "Maumere"]
-  };
-
-  document.getElementById('provinsiSelect').addEventListener('change', function() {
-      const selectedProvince = this.value;
-      const kotaSelect = document.getElementById('kotaSelect');
-      kotaSelect.innerHTML = '<option value="" disabled selected hidden>Pilih Kota</option>'; 
-
-      if (selectedProvince in citiesByProvince) {
-          citiesByProvince[selectedProvince].forEach(function(city) {
-              const option = document.createElement('option');
-              option.value = city;
-              option.textContent = city;
-              kotaSelect.appendChild(option);
-          });
-      }
-  });
-
-  document.getElementById('searchButton').addEventListener('click', function() {
-      const selectedProvince = document.getElementById('provinsiSelect').value;
-      const selectedCity = document.getElementById('kotaSelect').value;
-      const selectedCategory = document.getElementById('kategoriSelect').value;
-
-      if (selectedProvince && selectedCity && selectedCategory) {
-          let url;
-          // Menentukan halaman tujuan berdasarkan opsi yang dipilih
-          if (selectedProvince === "Sulawesi Selatan" && selectedCity === "Parepare" && selectedCategory === "Semua") {
-              url = "parepare.html";
-          } else if (selectedProvince === "Sulawesi Barat" && selectedCity === "Polewali" && selectedCategory === "Semua") {
-              url = "polewali.html";
-          } else if (selectedProvince === "Sulawesi Barat" && selectedCity === "Mamasa" && selectedCategory === "Gunung") {
-              url = "";
-          } else if (selectedProvince === "Bali" && selectedCity === "Ubud" && selectedCategory === "Pantai") {
-            url = "searching wisata.html";
-          }
-          
-          if (url) {
-              window.location.href = url;
-          } else {
-              alert("Halaman belum tersedia untuk pilihan yang Anda buat.");
-          }
-      } else {
-          alert("Silakan pilih provinsi, kota, dan kategori.");
-      }
-  });
-</script>
 </body>
 </html>

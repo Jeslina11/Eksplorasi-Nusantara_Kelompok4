@@ -4,43 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class LandingController extends Controller
+class DashboardController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
+    public function berandalogin()
     {
         //
-        return view('landing.index');
+        return view ('dasboard.berandalogin');
     }
-
-    public function informasi()
-    {
-        //
-        return view('landing.informasi');
-    }
-    
-    public function wisata()
-    { 
-        //
-        return view('landing.wisata');
-    }
-
-    public function login()
-    {
-        //
-        return view('dasboard.login');
-    }
-
-    // public function menujuindonesia()
-    // {
-    //     //
-    //     return view('dasboard.menujuindonesia');
-    // }
-
-
-
 
     /**
      * Show the form for creating a new resource.

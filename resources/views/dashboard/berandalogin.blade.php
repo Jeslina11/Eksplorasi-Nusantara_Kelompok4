@@ -1,17 +1,16 @@
-{{--  {{--  <?php
+{{--  <?php
 if (file_exists('koneksi.php')) {
     include 'koneksi.php';
 } else {
     echo "File koneksi.php tidak ditemukan!";
     exit;
 }  --}}
-
-?>  
+?>
 <!DOCTYPE html>
 <html>
 <head>
   <title>Beranda</title>
-  <link rel="stylesheet" type="text/css" href="{{ asset('css/Beranda style.css') }}">
+  <link rel="stylesheet" href="{{ asset('css/Beranda style.css') }}">
   <!-- link -->
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"/>
@@ -19,10 +18,12 @@ if (file_exists('koneksi.php')) {
 </head>
 <body>
 
+
 <!--------------------- NAVBAR SECTION ------------------>
 <header>
-  @include('komponen.navbar')
+  @include('komponen.halog')
 </header>
+
 
 <!---------------------- BACKGROUND --------------------->
 <div class="Background"></div>
@@ -274,7 +275,7 @@ if (file_exists('koneksi.php')) {
 <div class="teks-Wisata">
   <h1>Wisata Terkenal di Sulawesi</h1>
   <p>Surga Tersembunyi Penuh Petualangan!</p>
-</div>
+  </div>
   <div class="container-Wisata">
     <div class="card-Wisata">
       <a href="patung yesus buntu burake.html">
@@ -282,7 +283,9 @@ if (file_exists('koneksi.php')) {
             <div class="rating-badge-Wisata">
                 <span class="rating-text-Wisata">4.5</span>
                 <span class="rating-star-Wisata">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                    </svg>
                 </span>
             </div>
         </div>
@@ -300,7 +303,9 @@ if (file_exists('koneksi.php')) {
             <div class="rating-badge-Wisata">
                 <span class="rating-text-Wisata">4.6</span>
                 <span class="rating-star-Wisata">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                    </svg>
                 </span>
             </div>
         </div>
@@ -318,7 +323,9 @@ if (file_exists('koneksi.php')) {
           <div class="rating-badge-Wisata">
               <span class="rating-text-Wisata">4.6</span>
               <span class="rating-star-Wisata">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                  </svg>
               </span>
           </div>
       </div>
@@ -356,7 +363,9 @@ if (file_exists('koneksi.php')) {
             <div class="rating-badge-Wisata">
                 <span class="rating-text-Wisata">4.5</span>
                 <span class="rating-star-Wisata">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                    </svg>
                 </span>
             </div>
         </div>
@@ -374,7 +383,9 @@ if (file_exists('koneksi.php')) {
             <div class="rating-badge-Wisata">
                 <span class="rating-text-Wisata">4.6</span>
                 <span class="rating-star-Wisata">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                    </svg>
                 </span>
             </div>
         </div>
@@ -392,7 +403,9 @@ if (file_exists('koneksi.php')) {
           <div class="rating-badge-Wisata">
               <span class="rating-text-Wisata">4.7</span>
               <span class="rating-star-Wisata">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                  </svg>
               </span>
           </div>
       </div>
@@ -410,7 +423,9 @@ if (file_exists('koneksi.php')) {
             <div class="rating-badge-Wisata">
                 <span class="rating-text-Wisata">4.7</span>
                 <span class="rating-star-Wisata">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                    </svg>
                 </span>
             </div>
         </div>
@@ -428,7 +443,9 @@ if (file_exists('koneksi.php')) {
             <div class="rating-badge-Wisata">
                 <span class="rating-text-Wisata">4.5</span>
                 <span class="rating-star-Wisata">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                    </svg>
                 </span>
             </div>
         </div>
@@ -446,7 +463,9 @@ if (file_exists('koneksi.php')) {
             <div class="rating-badge-Wisata">
                 <span class="rating-text-Wisata">4.6</span>
                 <span class="rating-star-Wisata">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                    </svg>
                 </span>
             </div>
         </div>
@@ -464,7 +483,9 @@ if (file_exists('koneksi.php')) {
           <div class="rating-badge-Wisata">
               <span class="rating-text-Wisata">4.7</span>
               <span class="rating-star-Wisata">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                  </svg>
               </span>
           </div>
       </div>
@@ -482,7 +503,9 @@ if (file_exists('koneksi.php')) {
             <div class="rating-badge-Wisata">
                 <span class="rating-text-Wisata">4.4</span>
                 <span class="rating-star-Wisata">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                    </svg>
                 </span>
             </div>
         </div>
@@ -500,7 +523,9 @@ if (file_exists('koneksi.php')) {
             <div class="rating-badge-Wisata">
                 <span class="rating-text-Wisata">4.4</span>
                 <span class="rating-star-Wisata">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                    </svg>
                 </span>
             </div>
         </div>
