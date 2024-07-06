@@ -43,7 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $stmt->bind_param("iisi", $user_id, $id_tempat_wisata, $review, $rating);
 
     if ($stmt->execute()) {
-        echo "<script>alert('Ulasan berhasil dikirim!'); window.location.href = 'Beranda-Berhasil.php';</script>";
+        echo "<script>alert('Ulasan berhasil dikirim!'); window.location.href = 'Candi Borobudur.php';</script>";
         exit;
     } else {
         echo "Pengiriman ulasan gagal: " . htmlspecialchars($stmt->error);
