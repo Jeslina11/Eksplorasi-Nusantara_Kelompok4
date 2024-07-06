@@ -24,10 +24,10 @@ if (file_exists('koneksi.php')) {
         <img src="image/logo.png" alt="Logo" />
     </a>
     <ul class="navbar">
-        <li><a href="halaman.html" id="home">Beranda</a></li>
+        <li><a href="halaman.php" id="home">Beranda</a></li>
         <li><a href="#holiday" id="about">Tentang</a></li>
-        <li><a href="informasi umum.html" id="informasi">Informasi umum</a></li>
-        <li><a href="wisata.html" id="about">Wisata</a></li>
+        <li><a href="informasi umum.php" id="informasi">Informasi umum</a></li>
+        <li><a href="wisata.php" id="about">Wisata</a></li>
         <li class="login"><a href="Login.php" id="loginButton">Masuk</a></li>
     </ul>
 </header>

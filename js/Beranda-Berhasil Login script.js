@@ -9,10 +9,10 @@ window.addEventListener("scroll", function() {
 
 
 
-//<!------------------- LOGIN/REGISTER BUTTON ---------------->
+// <!------------------- LOGIN/REGISTER BUTTON ---------------->
 // Menggunakan JavaScript untuk menangani klik pada tombol login
 document.getElementById('loginButton').addEventListener('click', function() {
-  window.location.href = 'login.html';
+  window.location.href = 'logout.php';
 });
 
 

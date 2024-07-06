@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 if (file_exists('koneksi.php')) {
     include 'koneksi.php';
 } else {
@@ -7,28 +9,41 @@ if (file_exists('koneksi.php')) {
 }
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $username = $_SESSION['username']; // trim($_POST['username']);
-    $rating = intval($_POST['rate']); // Ensure rating is an integer
+    // Mengambil data dari formulir
+    if (isset($_SESSION['user_id'])) {
+        $user_id = $_SESSION['user_id'];
+    } else {
+        echo "Session user_id tidak tersedia.";
+        exit;
+    }
+
+    $rating = isset($_POST['rate']) ? intval($_POST['rate']) : 0; // Pastikan rating adalah integer
     $review = trim($_POST['review']);
-    echo $username . ' rating ' . $rating . ' review ' . $review;
+    $id_tempat_wisata = isset($_POST['id_tempat_wisata']) ? intval($_POST['id_tempat_wisata']) : 0;
+
     // Validate rating value
     if ($rating < 1 || $rating > 5) {
         echo "Nilai rating harus antara 1 dan 5!";
         exit;
     }
 
+    // Validate id_tempat_wisata
+    if ($id_tempat_wisata <= 0) {
+        echo "ID tempat wisata tidak valid!";
+        exit;
+    }
+
     // Prepare and bind
-    $stmt = $conn->prepare("INSERT INTO Ulasan (username, rating, review) VALUES (?, ?, ?)");
+    $stmt = $conn->prepare("INSERT INTO Ulasan (user_id, tempat_wisata_id, comment, rating) VALUES (?, ?, ?, ?)");
     if ($stmt === false) {
         echo "Gagal mempersiapkan statement: " . htmlspecialchars($conn->error);
         exit;
     }
 
-    $stmt->bind_param("sis", $username, $rating, $review);
+    $stmt->bind_param("iisi", $user_id, $id_tempat_wisata, $review, $rating);
 
     if ($stmt->execute()) {
-        echo "Ulasan berhasil dikirim!";
-        // header("Location: bromo.php");
+        echo "<script>alert('Ulasan berhasil dikirim!'); window.location.href = 'Candi Borobudur.php';</script>";
         exit;
     } else {
         echo "Pengiriman ulasan gagal: " . htmlspecialchars($stmt->error);
@@ -39,3 +54,4 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 } else {
     echo "Metode pengiriman data tidak valid!";
 }
+?>

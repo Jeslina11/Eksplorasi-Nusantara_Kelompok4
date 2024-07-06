@@ -1,10 +1,14 @@
 <?php
+session_start();
+
 if (file_exists('koneksi.php')) {
     include 'koneksi.php';
 } else {
     echo "File koneksi.php tidak ditemukan!";
     exit;
 }
+
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -29,15 +33,13 @@ if (file_exists('koneksi.php')) {
       <li><a href="#tentang" id="about">Tentang</a></li>
       <li><a href="Informasi umum.php" id="informasi">Informasi umum</a></li>
       <li><a href="Wisata.php" id="wisata">Wisata</a></li> 
-      <li class="login"><p href="Beranda.php" id="loginButton">Keluar</p></li>
+      <li class="login"><p href="Logout.php" id="loginButton">Keluar</p></li>
     </ul>
 </header>
 
 
 <!---------------------- BACKGROUND --------------------->
 <div class="Background"></div>
-
-
 
 <!--------------------- HEAD SECTION --------------------->
 <div class="head-section">

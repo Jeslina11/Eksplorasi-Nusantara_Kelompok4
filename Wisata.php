@@ -1,10 +1,12 @@
 <?php
-if (file_exists('koneksi.php')) {
+  
+  if (file_exists('koneksi.php')) {
     include 'koneksi.php';
-} else {
+  } else {
     echo "File koneksi.php tidak ditemukan!";
     exit;
-}
+  }
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -35,47 +37,48 @@ if (file_exists('koneksi.php')) {
 <!---------------------- BACKGROUND --------------------->
 <div class="Background"></div>
 
-
 <!---------------------- HEAD SECTION --------------------->
 <section>
   <div class="head">
     <h1>Jelajahi Wisata Nusantara</h1>
     <p>Nikmati keindahan alam dan budaya Wisata Nusantara serta pengalaman tak terlupakan yang menanti Anda di setiap sudutnya.</p>
-</div>
-  <div class="trip_bx">
-    <div class="search-bar">
-      <div class="search-item">
-          <i class="fas fa-map-marked-alt icon"></i>
-          <select id="provinsiSelect">
-              <option value="" disabled selected hidden>Pilih Provinsi</option>
-              <option value="Sulawesi Selatan">Sulawesi Selatan</option>
-              <option value="Sulawesi Tengah">Sulawesi Tengah</option>
-              <option value="Sulawesi Barat">Sulawesi Barat</option>
-              <option value="Sulawesi Utara">Sulawesi Utara</option>
-              <option value="Bali">Bali</option>
-          </select>
-      </div>
-      <div class="separator"></div>
-      <div class="search-item">
-          <i class="fas fa-building icon"></i>
-          <select id="kotaSelect">
-              <option value="" disabled selected hidden>Pilih Kota</option>
-          </select>
-      </div>
-      <div class="separator"></div>
-      <div class="search-item">
-          <i class="fas fa-list icon"></i>
-          <select id="kategoriSelect">
-              <option value="" disabled selected hidden>Kategori</option>
-              <option value="Semua">Semua</option>
-              <option value="Pulau">Pulau</option>
-              <option value="Air Terjun">Air Terjun</option>
-              <option value="Gunung">Gunung</option>
-              <option value="Pantai">Pantai</option>
-          </select>
-      </div>
-      <button class="search-button" id="searchButton">Cari</button>
   </div>
+  <div class="trip_bx">
+    <div class="">
+    <form action="search.php" method="GET" class="search-bar">
+    <div class="search-item">
+        <i class="fas fa-map-marked-alt icon"></i>
+        <select name="provinsi" id="provinsiSelect">
+            <option value="" disabled selected hidden>Pilih Provinsi</option>
+            <option value="Jawa Tengah">Jawa Tengah</option>
+            <option value="Bali">Bali</option>
+            <option value="Daerah Istimewa Yogyakarta">Daerah Istimewa Yogyakarta</option>
+            <option value="Jawa Timur">Jawa Timur</option>
+            <option value="Sulawesi Barat">Sulawesi Barat</option>
+            <option value="Sulawesi Utara">Sulawesi Utara</option>
+        </select>
+    </div>
+    <div class="separator"></div>
+    <div class="search-item">
+        <i class="fas fa-building icon"></i>
+        <select name="kota" id="kotaSelect">
+            <option value="" disabled selected hidden>Pilih Kota</option>
+        </select>
+    </div>
+    <div class="separator"></div>
+    <div class="search-item">
+        <i class="fas fa-list icon"></i>
+        <select name="kategori" id="kategoriSelect">
+            <option value="" disabled selected hidden>Kategori</option>
+            <option value="Semua">Semua</option>
+        </select>
+    </div>
+    <button type="submit" class="search-button" id="searchButton">Cari</button>
+  </form>
+
+
+  </div>
+
   
   <div class="travel_bx">
     <h4>Kota untuk bepergian</h4>
@@ -84,7 +87,7 @@ if (file_exists('koneksi.php')) {
             <h3>PAREPARE</h3>
             <img src="image/habibie bg.png" alt="">
             <div class="btn_city">
-                <a href="parepare.html">Detail</a>
+                <a href="parepare.php">Detail</a>
                 <h5>Sulawesi Selatan</h5>
             </div>
         </div>
@@ -92,15 +95,15 @@ if (file_exists('koneksi.php')) {
             <h3>PALU</h3>
             <img src="image/palu.png" alt="">
             <div class="btn_city">
-                <a href="palu.html">Detail</a>
+                <a href="palu.php">Detail</a>
                 <h5>Sulawesi Tengah</h5>
             </div>
-        </div>
+        </div>6
         <div class="card">
             <h3>POLEWALI</h3>
             <img src="image/polewali bg.png" alt="">
             <div class="btn_city">
-                <a href="polewali.html">Detail</a>
+                <a href="polewali.php">Detail</a>
                 <h5>Sulawesi Barat</h5>
             </div>
         </div>
@@ -108,7 +111,7 @@ if (file_exists('koneksi.php')) {
             <h3>MANADO</h3>
             <img src="image/manado.png" alt="">
             <div class="btn_city">
-                <a href="manado.html">Detail</a>
+                <a href="manado.php">Detail</a>
                 <h5>Sulawesi Utara</h5>
             </div>
         </div>

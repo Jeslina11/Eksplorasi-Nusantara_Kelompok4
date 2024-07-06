@@ -26,11 +26,11 @@ if (file_exists('koneksi.php')) {
     <img src="image/logo.png" alt="Logo" />
   </a>
     <ul class="navbar">
-      <li><a href="Beranda.html" id="home">Beranda</a></li>
+      <li><a href="Beranda.php" id="home">Beranda</a></li>
       <li><a href="#tentang" id="about">Tentang</a></li>
-      <li><a href="Informasi umum.html" id="informasi">Informasi umum</a></li>
-      <li><a href="Wisata.html" id="wisata">Wisata</a></li> 
-      <li class="login"><p href="Beranda.html" id="loginButton">Keluar</p></li>
+      <li><a href="Informasi umum.php" id="informasi">Informasi umum</a></li>
+      <li><a href="Wisata.php" id="wisata">Wisata</a></li> 
+      <li class="login"><p href="Beranda.php" id="loginButton">Keluar</p></li>
     </ul>
 </header>
 
@@ -363,22 +363,23 @@ if (file_exists('koneksi.php')) {
 <!-- RATING -->
 <div class="feedback-background2">
   <div class="feedback-container2">
-    <form class="feedback-form2">
+    <form action="simpan_ulasan.php" method="POST" class="feedback-form2">
       <h2>Berikan Ulasan Anda</h2>
       <p>Apa pendapat Anda tentang pengalaman Anda mengunjungi destinasi wisata ini?</p>
       <div class="star-widget2">
-        <input type="radio" name="rate" id="rate-5">
+        <input type="text" name="id_tempat_wisata" value="8">
+        <input type="radio" name="rate" value="5" id="rate-5">
         <label for="rate-5" class="fas fa-star"></label>
-        <input type="radio" name="rate" id="rate-4">
+        <input type="radio" name="rate" value="4" id="rate-4">
         <label for="rate-4" class="fas fa-star"></label>
-        <input type="radio" name="rate" id="rate-3">
+        <input type="radio" name="rate" value="3" id="rate-3">
         <label for="rate-3" class="fas fa-star"></label>
-        <input type="radio" name="rate" id="rate-2">
+        <input type="radio" name="rate" value="2" id="rate-2">
         <label for="rate-2" class="fas fa-star"></label>
-        <input type="radio" name="rate" id="rate-1">
+        <input type="radio" name="rate" value="1" id="rate-1">
         <label for="rate-1" class="fas fa-star"></label>
       </div>
-      <textarea placeholder="Tulisan pendapatmu disini...."></textarea>
+      <textarea name="review" placeholder="Tulisan pendapatmu disini...."></textarea>
       <div class="buttons2">
         <button type="submit">Kirim</button>
         <button type="button">Batalkan</button>

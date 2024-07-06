@@ -1,113 +1,125 @@
-
-//<!---------------- NAVBAR STICKY SECTION ------------------>
-const header = document.querySelector("header");
-window.addEventListener("scroll", function() {
-  header.classList.toggle("sticky", window.scrollY > 60)
-});
-
-
-//<!--------------------- SEARCH SECTION -------------------->
 const data = {
-  "Sulawesi Selatan": {
-    "Parepare": ["Semua", "Gunung", "Pantai"],
-    "Pinrang": ["Semua", "Gunung", "Pantai", "Air Terjun", "Pulau"],
-    "Makassar": ["Semua", "Pantai", "Pulau"],
-    "Maros": ["Semua", "Gunung", "Air Terjun", "Pulau", "Pantai"],
-    "Barru": ["Semua", "Gunung", "Air Terjun", "Pulau", "Pantai"],
-    "Tana Toraja": ["Semua", "Gunung", "Air Terjun", "Pulau", "Pantai"],
+  "Jawa Tengah": {
+      "Magelang": ["Semua", "Budaya"],
   },
-  "Sulawesi Tenggara": {
-    "Kendari": ["Semua", "Gunung", "Pantai"],
+  "Bali": {
+      "Ubud": ["Semua", "Pantai"],
+  },
+  "Daerah Istimewa Yogyakarta": {
+      "Sleman": ["Semua", "Budaya"],
+  },
+  "Jawa Timur": {
+      "Pacitan": ["Semua", "Budaya"],
+      "Probolinggo": ["Semua", "Gunung"],
   },
   "Sulawesi Barat": {
-    "Majene": ["Semua", "Gunung", "Air Terjun", "Pantai"],
-    "Mamuju": ["Semua", "Gunung", "Air Terjun", "Pantai"],
-    "Polewali": ["Semua", "Gunung", "Air Terjun", "Pulau", "Pantai"],
-  },
-  "Sulawesi Tengah": {
-    "Palu": ["Semua", "Gunung", "Air Terjun", "Pantai"],
-    "Poso": ["Semua", "Gunung", "Air Terjun", "Pantai"],
+      "Polewali Mandar": ["Semua", "Gunung"],
   },
   "Sulawesi Utara": {
-    "Manado": ["Semua", "Gunung", "Air Terjun", "Pantai"],
-  },
-
-  "Bali": {
-    "Denpasar": ["Semua", "Pantai"],
-    "Ubud": ["Semua", "Gunung", "Pantai"],
-    "Kuta": ["Semua", "Pantai"]
+      "Manado": ["Semua", "Pantai"],
   },
 };
 
 const citiesByProvince = {
-  "Sulawesi Selatan": ["Parepare", "Pinrang", "Makassar", "Maros", "Barru", "Tana Toraja"],
-  "Sulawesi Tengah": ["Palu", "Poso"],
-  "Sulawesi Barat": ["Majene", "Mamuju", "Polewali"],
-  "Sulawesi Utara": ["Manado", "Boroko", "Tomohon"],
-  "Bali": ["Denpasar", "Ubud", "Kuta"],
+  "Jawa Tengah": ["Magelang"],
+  "Bali": ["Ubud"],
+  "Daerah Istimewa Yogyakarta": ["Sleman"],
+  "Jawa Timur": ["Pacitan", "Probolinggo"],
+  "Sulawesi Barat": ["Polewali Mandar"],
+  "Sulawesi Utara": ["Manado"],
 };
 
-const kotaSelect = document.getElementById('kotaSelect');
+const kategoriByKota = {
+  "Jawa Tengah": ["Budaya"],
+  "Bali": ["Pantai"],
+  "Daerah Istimewa Yogyakarta": ["Budaya"],
+  "Jawa Timur": ["Budaya", "Gunung"],
+  "Sulawesi Barat": ["Gunung"],
+  "Sulawesi Utara": ["Pantai"],
+};
+
 const searchButton = document.getElementById('searchButton');
+const provinsiSelect = document.getElementById('provinsiSelect');
+const kotaSelect = document.getElementById('kotaSelect');
+const kategoriSelect = document.getElementById('kategoriSelect');
 
 // Mengisi dropdown kota berdasarkan pilihan provinsi
-document.getElementById('provinsiSelect').addEventListener('change', function() {
+provinsiSelect.addEventListener('change', function() {
   const selectedProvince = this.value;
   kotaSelect.innerHTML = '<option value="" disabled selected hidden>Pilih Kota</option>';
+  kategoriSelect.innerHTML = '<option value="" disabled selected hidden>Kategori</option>';
 
   if (selectedProvince in citiesByProvince) {
-    citiesByProvince[selectedProvince].forEach(function(city) {
-      const option = document.createElement('option');
-      option.value = city;
-      option.textContent = city;
-      kotaSelect.appendChild(option);
-    });
+      citiesByProvince[selectedProvince].forEach(function(city) {
+          const option = document.createElement('option');
+          option.value = city;
+          option.textContent = city;
+          kotaSelect.appendChild(option);
+      });
+  }
+});
+
+// Event listener untuk memperbarui kategori berdasarkan kota yang dipilih
+kotaSelect.addEventListener('change', function() {
+  const selectedProvince = provinsiSelect.value;
+  const selectedCity = this.value;
+
+  kategoriSelect.innerHTML = '<option value="" disabled selected hidden>Kategori</option>';
+
+  if (selectedProvince && selectedCity in data[selectedProvince]) {
+      data[selectedProvince][selectedCity].forEach(function(kategori) {
+          const option = document.createElement('option');
+          option.value = kategori;
+          option.textContent = kategori;
+          kategoriSelect.appendChild(option);
+      });
   }
 });
 
 // Event listener untuk tombol Cari
 searchButton.addEventListener('click', function() {
-  const selectedProvince = document.getElementById('provinsiSelect').value;
+  const selectedProvince = provinsiSelect.value;
   const selectedCity = kotaSelect.value;
-  const selectedCategory = document.getElementById('kategoriSelect').value;
+  const selectedCategory = kategoriSelect.value;
 
   if (selectedProvince && selectedCity && selectedCategory) {
-    const availableCategories = data[selectedProvince][selectedCity] || [];
+      const availableCategories = data[selectedProvince][selectedCity] || [];
 
-    if (!availableCategories.includes(selectedCategory)) {
-      alert(`Kategori ${selectedCategory} tidak tersedia di ${selectedCity}, ${selectedProvince}.`);
-      return;
-    }
+      if (!availableCategories.includes(selectedCategory)) {
+          alert(`Kategori ${selectedCategory} tidak tersedia di ${selectedCity}, ${selectedProvince}.`);
+          return;
+      }
 
-    let url;
-    // Menentukan halaman tujuan berdasarkan opsi yang dipilih
-    switch (`${selectedProvince}-${selectedCity}-${selectedCategory}`) {
-      case "Sulawesi Selatan-Parepare-Semua":
-        url = "parepare.html";
-        break;
-      case "Sulawesi Barat-Polewali-Semua":
-        url = "polewali.html";
-        break;
-      case "Sulawesi Tengah-Palu-Semua":
-        url = "palu.html";
-        break;
-      case "Sulawesi Utara-Manado-Semua":
-        url = "manado.html";
-        break;
-      case "Bali-Ubud-Pantai":
-        url = "Bali-Ubud-Pantai.html";
-        break;
-      default:
-        url = ""; 
-        break;
-    }
-
-    if (url) {
-      window.location.href = url;
-    } else {
-      alert("Halaman belum tersedia untuk pilihan yang Anda buat.");
-    }
+      let url;
+      // Menentukan halaman tujuan berdasarkan opsi yang dipilih
+      switch (`${selectedProvince}-${selectedCity}-${selectedCategory}`) {
+          case "Jawa Tengah-Magelang-Semua":
+              url = "Candi Borobudur.php"; // Ganti dengan halaman yang sesuai di aplikasi Anda
+              break;
+          case "Bali-Ubud-Pantai":
+              url = "pantai_bali_ubud.php"; // Ganti dengan halaman yang sesuai di aplikasi Anda
+              break;
+          case "Daerah Istimewa Yogyakarta-Sleman-Semua":
+              url = "candi prambanan.php"; // Ganti dengan halaman yang sesuai di aplikasi Anda
+              break;
+          case "Jawa Timur-Pacitan-Semua":
+              url = "goa_gong_pacitan.php"; // Ganti dengan halaman yang sesuai di aplikasi Anda
+              break;
+          case "Jawa Timur-Probolinggo-Gunung":
+              url = "gunung_bromo.php"; // Ganti dengan halaman yang sesuai di aplikasi Anda
+              break;
+          case "Sulawesi Barat-Polewali Mandar-Gunung":
+              url = "kampung_rumede.php"; // Ganti dengan halaman yang sesuai di aplikasi Anda
+              break;
+          case "Sulawesi Utara-Manado-Pantai":
+              url = "pantai_ora_resort.php"; // Ganti dengan halaman yang sesuai di aplikasi Anda
+              break;
+          default:
+              url = ""; // URL default jika tidak ada yang cocok
+              break;
+      }
+      
   } else {
-    alert("Silakan pilih Provinsi, Kota, dan Kategori.");
+      alert("Silakan pilih Provinsi, Kota, dan Kategori.");
   }
 });

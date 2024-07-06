@@ -11,7 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $password = $_POST['password'];
 
     // Prepare and bind
-    $stmt = $conn->prepare("SELECT nama, password FROM Registrasi WHERE email = ?");
+    $stmt = $conn->prepare("SELECT id, nama, password FROM Users WHERE email = ?");
     if ($stmt === false) {
         echo "Gagal mempersiapkan statement: " . htmlspecialchars($conn->error);
         exit;
@@ -22,16 +22,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if ($stmt->execute()) {
         $stmt->store_result();
         if ($stmt->num_rows == 1) {
-            $stmt->bind_result($username, $hashed_password);
+            $stmt->bind_result($id, $username, $hashed_password);
             $stmt->fetch();
             if (password_verify($password, $hashed_password)) {
                 // Start a new session and save the user info
                 session_start();
+                $_SESSION['user_id'] = $id;
                 $_SESSION['username'] = $username;
                 $_SESSION['email'] = $email;
                 
                 // Redirect to logout page
-                header("Location: halaman logout.php");
+                header("Location: Beranda-berhasil login.php");
                 exit;
             } else {
                 echo "Password salah!";
@@ -49,17 +50,3 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     echo "Metode pengiriman data tidak valid!";
 }
 ?>
-
-
-
-
-
-
-
-
-
-
-
-
-
-

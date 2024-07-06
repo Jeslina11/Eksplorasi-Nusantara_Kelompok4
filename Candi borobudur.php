@@ -1,10 +1,16 @@
 <?php
+session_start();
+
 if (file_exists('koneksi.php')) {
     include 'koneksi.php';
+    
 } else {
     echo "File koneksi.php tidak ditemukan!";
     exit;
 }
+
+$result = $conn->query("SELECT u.*, t.rating, t.comment, t.created_at FROM Ulasan t JOIN Users u ON t.user_id = u.id WHERE tempat_wisata_id=1");
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -29,7 +35,7 @@ if (file_exists('koneksi.php')) {
       <li><a href="#tentang" id="about">Tentang</a></li>
       <li><a href="Informasi umum.php" id="informasi">Informasi umum</a></li>
       <li><a href="Wisata.php" id="wisata">Wisata</a></li> 
-      <li class="login"><p href="Beranda.php" id="loginButton">Keluar</p></li>
+      <li class="login"><p href="Logout.php" id="loginButton">Keluar</p></li>
     </ul>
 </header>
 
@@ -231,132 +237,44 @@ if (file_exists('koneksi.php')) {
       </div>
     </div>
 
+    
     <!-- Testimonial 1 -->
     <div class="owl-carousel owl-theme testimonials-container">
-      <div class="item testimonial-card">
-        <main class="test-card-body">
-          <p>"Candi Borobudur adalah keajaiban arsitektur yang memukau. Detail ukirannya luar biasa dan pemandangan dari atas candi sangat indah. Saya sangat merekomendasikan kunjungan ke sini untuk semua pencinta sejarah dan budaya."</p>
-          <div class="ratings">
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-          </div>
-        </main>
-        <div class="profile">
-          <div class="profile-image"></div>
-          <div class="profile-desc">
-            <span>Adam</span>
-            <span>adams3@gmail.com</span>
-          </div>
-        </div>
-      </div>
+    <?php
+      // Misalkan $results adalah array yang berisi hasil testimoni yang Anda ambil dari database
+        if ($result->num_rows > 0) {
+          while($row = $result->fetch_assoc()) {
+              echo '<div class="item testimonial-card">';
+              echo '<main class="test-card-body">';
+              echo '<p>' . htmlspecialchars($row['comment']) . '</p>';
+              
+              // Menggunakan contoh rating statis, Anda mungkin perlu menggantinya dengan rating dari database
+              echo '<div class="ratings">';
+              for ($i = 1; $i <= $row['rating']; $i++) {
+                  echo '<i class="fa-solid fa-star"></i>';
+              }
+              echo '</div>';
+              
+              echo '</main>';
+              
+              // Profil pengguna dari tabel Users
+              echo '<div class="profile">';
+              echo '<div class="profile-image"></div>';
+              echo '<div class="profile-desc">';
+              echo '<span>' . htmlspecialchars($row['nama']) . '</span>'; 
+              echo '<span>' . htmlspecialchars($row['email']) . '</span>'; // Kolom email dari tabel Users
+              echo '</div>';
+              echo '</div>';
+              
+              echo '</div>'; // Penutup div item testimonial-card
+          }
+      } else {
+          echo '<div class="text-review">';
+          echo '<p>' . 'Belum ada Testimoni' . '</p>';
+          echo '</div>';
+      }
+      ?>
 
-      <!-- Testimonial 2 -->
-      <div class="item testimonial-card">
-        <main class="test-card-body">
-          <p>"Kunjungan ke Candi Borobudur sangat mengesankan. Struktur candi yang megah dan suasana yang tenang memberikan pengalaman yang tak terlupakan. Waktu terbaik untuk berkunjung adalah saat matahari terbit."</p>
-          <div class="ratings">
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-          </div>
-        </main>
-        <div class="profile">
-          <div class="profile-image"></div>
-          <div class="profile-desc">
-            <span>Anita</span>
-            <span>Anitaa90@gmail.com</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Testimonial 3 -->
-      <div class="item testimonial-card">
-        <main class="test-card-body">
-          <p>"Pengalaman di Candi Borobudur sangat luar biasa. Saya bisa merasakan sejarah yang kental dari setiap sudut candi ini. Pemandangan dari puncak candi saat matahari terbenam adalah salah satu yang terbaik yang pernah saya lihat."</p>
-          <div class="ratings">
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-          </div>
-        </main>
-        <div class="profile">
-          <div class="profile-image"></div>
-          <div class="profile-desc">
-            <span>Bambang</span>
-            <span>Bambanguhuy@gmail.com</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Testimonial 4 -->
-      <div class="item testimonial-card">
-        <main class="test-card-body">
-          <p>"Candi Borobudur menawarkan pengalaman yang sangat berharga. Selain keindahan arsitekturnya, keramahan masyarakat sekitar juga menambah kenyamanan kunjungan saya. Tempat yang wajib dikunjungi saat berada di Yogyakarta."</p>
-          <div class="ratings">
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-          </div>
-        </main>
-        <div class="profile">
-          <div class="profile-image"></div>
-          <div class="profile-desc">
-            <span>Anisa</span>
-            <span>Anisay@gmail.com</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Testimonial 5 -->
-      <div class="item testimonial-card">
-        <main class="test-card-body">
-          <p>"Borobudur adalah situs sejarah yang luar biasa. Saya sangat terkesan dengan keindahan dan keagungan candi ini. Banyak pelajaran sejarah yang dapat dipelajari di sini. Sangat direkomendasikan untuk semua orang yang berkunjung ke Indonesia."</p>
-          <div class="ratings">
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-          </div>
-        </main>
-        <div class="profile">
-          <div class="profile-image"></div>
-          <div class="profile-desc">
-            <span>Jessica</span>
-            <span>Jessik@gmail.com</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Testimonial 6 -->
-      <div class="item testimonial-card">
-        <main class="test-card-body">
-          <p>"Candi Borobudur adalah tempat yang sangat spesial. Struktur bangunan yang mengesankan dan suasana yang damai membuat saya betah berlama-lama di sini. Pengalaman yang sangat berkesan dan saya pasti akan kembali lagi."</p>
-          <div class="ratings">
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-          </div>
-        </main>
-        <div class="profile">
-          <div class="profile-image"></div>
-          <div class="profile-desc">
-            <span>Dani</span>
-            <span>Daniii@gmail.com</span>
-          </div>
-        </div>
-      </div>
     </div>
   </div>
 </section>
@@ -372,22 +290,23 @@ if (file_exists('koneksi.php')) {
 <!-- RATING -->
 <div class="feedback-background2">
   <div class="feedback-container2">
-    <form class="feedback-form2">
+    <form action="simpan_ulasan.php" method="POST" class="feedback-form2">
       <h2>Berikan Ulasan Anda</h2>
       <p>Apa pendapat Anda tentang pengalaman Anda mengunjungi destinasi wisata ini?</p>
       <div class="star-widget2">
-        <input type="radio" name="rate" id="rate-5">
+        <input type="text" name="id_tempat_wisata" value="1">
+        <input type="radio" name="rate" value="5" id="rate-5">
         <label for="rate-5" class="fas fa-star"></label>
-        <input type="radio" name="rate" id="rate-4">
+        <input type="radio" name="rate" value="4" id="rate-4">
         <label for="rate-4" class="fas fa-star"></label>
-        <input type="radio" name="rate" id="rate-3">
+        <input type="radio" name="rate" value="3" id="rate-3">
         <label for="rate-3" class="fas fa-star"></label>
-        <input type="radio" name="rate" id="rate-2">
+        <input type="radio" name="rate" value="2" id="rate-2">
         <label for="rate-2" class="fas fa-star"></label>
-        <input type="radio" name="rate" id="rate-1">
+        <input type="radio" name="rate" value="1" id="rate-1">
         <label for="rate-1" class="fas fa-star"></label>
       </div>
-      <textarea placeholder="Tulisan pendapatmu disini...."></textarea>
+      <textarea name="review" placeholder="Tulisan pendapatmu disini...."></textarea>
       <div class="buttons2">
         <button type="submit">Kirim</button>
         <button type="button">Batalkan</button>

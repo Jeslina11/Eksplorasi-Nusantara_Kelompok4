@@ -382,22 +382,23 @@ if (file_exists('koneksi.php')) {
 <!-- RATING -->
 <div class="feedback-background2">
   <div class="feedback-container2">
-    <form class="feedback-form2">
+    <form action="simpan_ulasan.php" method="POST" class="feedback-form2">
       <h2>Berikan Ulasan Anda</h2>
       <p>Apa pendapat Anda tentang pengalaman Anda mengunjungi destinasi wisata ini?</p>
       <div class="star-widget2">
-        <input type="radio" name="rate" id="rate-5">
+        <input type="text" name="id_tempat_wisata" value="3">
+        <input type="radio" name="rate" value="5" id="rate-5">
         <label for="rate-5" class="fas fa-star"></label>
-        <input type="radio" name="rate" id="rate-4">
+        <input type="radio" name="rate" value="4" id="rate-4">
         <label for="rate-4" class="fas fa-star"></label>
-        <input type="radio" name="rate" id="rate-3">
+        <input type="radio" name="rate" value="3" id="rate-3">
         <label for="rate-3" class="fas fa-star"></label>
-        <input type="radio" name="rate" id="rate-2">
+        <input type="radio" name="rate" value="2" id="rate-2">
         <label for="rate-2" class="fas fa-star"></label>
-        <input type="radio" name="rate" id="rate-1">
+        <input type="radio" name="rate" value="1" id="rate-1">
         <label for="rate-1" class="fas fa-star"></label>
       </div>
-      <textarea placeholder="Tulisan pendapatmu disini...."></textarea>
+      <textarea name="review" placeholder="Tulisan pendapatmu disini...."></textarea>
       <div class="buttons2">
         <button type="submit">Kirim</button>
         <button type="button">Batalkan</button>
